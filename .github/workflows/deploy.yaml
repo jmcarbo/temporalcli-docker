@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/temporalcli:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository_owner }}/temporalcli-docker:${{ github.sha }}
           build-args: |
             BASE_IMAGE=ubuntu:latest
             BASE_IMAGE_ARCH=amd64
