@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set sha_short
         id: vars
-        run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
       - run: echo ${{ env.SHA_SHORT }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
