@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Set sha_short
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -30,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/temporalcli:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository_owner }}/temporalcli:${{ env.sha_short }}
           platforms: linux/amd64,linux/arm64
           file: Dockerfile
           context: .
